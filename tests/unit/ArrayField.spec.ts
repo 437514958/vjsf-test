@@ -1,7 +1,10 @@
-import { expect, describe, it, beforeEach } from 'vitest'
+import { expect, describe, it } from 'vitest'
 import { ArrayField, NumberField, SelectionWidget, StringField } from '../../lib'
 import { mount } from '@vue/test-utils'
 import TestComponent from './utils/TestComponent'
+import TextWidget from '../../lib/theme-default/TextWidget'
+import NumberWidget from '../../lib/theme-default/NumberWidget'
+import SchemaForm from '../../lib/SchemaForm'
 
 describe('ArrayField', () => {
   it('shoulde render multi type', () => {
@@ -24,11 +27,11 @@ describe('ArrayField', () => {
     })
 
     const arr = wrapper.findComponent(ArrayField)
-    const str = wrapper.findComponent(StringField)
-    const num = wrapper.findComponent(NumberField)
+    const str = wrapper.findComponent(TextWidget)
+    const num = wrapper.findComponent(NumberWidget)
     expect(arr.exists()).toBeTruthy()
-    expect(str.exists()).toBeTruthy()
     expect(num.exists()).toBeTruthy()
+    expect(str.exists()).toBeTruthy()
   })
 
   it('shoulde render single type', () => {
@@ -46,8 +49,10 @@ describe('ArrayField', () => {
     })
 
     const arr = wrapper.findComponent(ArrayField)
-    const strs = wrapper.findAllComponents(StringField)
-    expect(arr.exists()).toBeTruthy()
+    const strs = wrapper.findAllComponents(TextWidget)
+    const item = wrapper.findAllComponents('ArrayItemWrapper')
+    const str = wrapper.findComponent(SchemaForm)
+    console.log(111111, item.length)
     expect(strs.length).toBe(2)
     expect(strs[0].props('value')).toBe('1')
   })

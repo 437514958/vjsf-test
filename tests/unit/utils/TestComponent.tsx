@@ -1,8 +1,9 @@
-import JsonSchemaForm, { Schema, ThemeProvider } from '../../../lib'
+import JsonSchemaForm, { type Schema, ThemeProvider } from '../../../lib'
 import { defineComponent, type PropType } from 'vue'
 import defaultTheme from '../../../lib/theme-default'
 
 export const ThemeDefaultProvider = defineComponent({
+  name: 'ThemeDefaultProvider',
   setup(p, { slots }) {
     return () => (
       <ThemeProvider theme={defaultTheme}>{slots.default && slots.default()}</ThemeProvider>
