@@ -27,8 +27,8 @@ describe('ArrayField', () => {
     })
 
     const arr = wrapper.findComponent(ArrayField)
-    const str = wrapper.findComponent(TextWidget)
-    const num = wrapper.findComponent(NumberWidget)
+    const str = wrapper.findComponent(StringField)
+    const num = wrapper.findComponent(NumberField)
     expect(arr.exists()).toBeTruthy()
     expect(num.exists()).toBeTruthy()
     expect(str.exists()).toBeTruthy()
@@ -49,10 +49,7 @@ describe('ArrayField', () => {
     })
 
     const arr = wrapper.findComponent(ArrayField)
-    const strs = wrapper.findAllComponents(TextWidget)
-    const item = wrapper.findAllComponents('ArrayItemWrapper')
-    const str = wrapper.findComponent(SchemaForm)
-    console.log(111111, item.length)
+    const strs = wrapper.findAllComponents(StringField)
     expect(strs.length).toBe(2)
     expect(strs[0].props('value')).toBe('1')
   })
